@@ -170,7 +170,7 @@ public class CAST {
 		
 		public OptionPanel asOptionPanel() {
 			OptionPanel op = new OptionPanel();
-			op.addMessage("Automatic Segmentation: ");
+			op.addMessage("Computer Assisted Segmentation: ");
 			op.addNumericField("Boundary Padding:", boundaryDistance, new OptionPanel.IntSetter(this, "boundaryDistance"));
 			op.addChoice("Training Set(s): ", names, 0, new OptionPanel.ChoiceStringSetter(this, "fileName"));
 			return op;
