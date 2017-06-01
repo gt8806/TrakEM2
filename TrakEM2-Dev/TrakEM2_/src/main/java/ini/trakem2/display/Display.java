@@ -47,7 +47,7 @@ import ini.trakem2.display.inspect.InspectPatchTrianglesMode;
 import ini.trakem2.imaging.Blending;
 import ini.trakem2.imaging.LayerStack;
 import ini.trakem2.imaging.PatchStack;
-import ini.trakem2.imaging.AutomaticSegmentation;
+import ini.trakem2.imaging.CAST;
 import ini.trakem2.imaging.filters.FilterEditor;
 import ini.trakem2.io.NeuroML;
 import ini.trakem2.parallel.Process;
@@ -3286,7 +3286,7 @@ public final class Display extends DBObject implements ActionListener, IJEventLi
 		item = new JMenuItem("Calibration..."); item.addActionListener(this); menu.add(item);
 		item = new JMenuItem("Grid overlay..."); item.addActionListener(this); menu.add(item);
 		item = new JMenuItem("Adjust snapping parameters..."); item.addActionListener(this); menu.add(item);
-		item = new JMenuItem("Adjust AutomaticSegmentation parameters..."); item.addActionListener(this); menu.add(item);
+		item = new JMenuItem("Adjust CAST parameters..."); item.addActionListener(this); menu.add(item);
 		item = new JMenuItem("Adjust arealist paint parameters..."); item.addActionListener(this); menu.add(item);
 		item = new JMenuItem("Show current 2D position in 3D"); item.addActionListener(this); menu.add(item);
 		item = new JMenuItem("Show layers as orthoslices in 3D"); item.addActionListener(this); menu.add(item);
@@ -5307,7 +5307,7 @@ public final class Display extends DBObject implements ActionListener, IJEventLi
 		} else if (command.equals("Adjust snapping parameters...")) {
 			AlignTask.p_snap.setup("Snap");
 		} else if (command.equals("Adjust voodoo parameters...")) {
-			AutomaticSegmentation.vp.setup();
+			CAST.vp.setup();
 		} else if (command.equals("Adjust arealist paint parameters...")) {
 			AreaWrapper.PP.setup();
 		} else if (command.equals("Fill ROI in alpha mask")) {
@@ -6864,7 +6864,7 @@ public final class Display extends DBObject implements ActionListener, IJEventLi
 		OptionPanel op = null;
 		switch (ProjectToolbar.getToolId()) {
 			case ProjectToolbar.PENCIL:
-				op = AutomaticSegmentation.vp.asOptionPanel();
+				op = CAST.vp.asOptionPanel();
 				break;
 			case ProjectToolbar.BRUSH:
 				op = AreaWrapper.PP.asOptionPanel();

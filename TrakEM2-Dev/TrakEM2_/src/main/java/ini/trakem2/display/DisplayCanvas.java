@@ -35,7 +35,7 @@ import ij.process.ColorProcessor;
 import ini.trakem2.Project;
 import ini.trakem2.display.graphics.GraphicsSource;
 import ini.trakem2.display.inspect.InspectPatchTrianglesMode;
-import ini.trakem2.imaging.AutomaticSegmentation;
+import ini.trakem2.imaging.CAST;
 import ini.trakem2.persistence.Loader;
 import ini.trakem2.utils.Bureaucrat;
 import ini.trakem2.utils.IJError;
@@ -459,10 +459,10 @@ public final class DisplayCanvas extends ImageCanvas implements KeyListener/*, F
 						Composite co = g2d.getComposite();
 						if (IJ.isWindows()) g2d.setColor(Color.yellow);
 						else g2d.setXORMode(Color.yellow); // XOR on yellow for best contrast
-						g2d.drawRect((int)((xMouse -srcRect.x -AutomaticSegmentation.vp.width/2)  * magnification),
-							     (int)((yMouse -srcRect.y -AutomaticSegmentation.vp.height/2) * magnification),
-							     (int)(AutomaticSegmentation.vp.width  * magnification),
-							     (int)(AutomaticSegmentation.vp.height * magnification));
+						g2d.drawRect((int)((xMouse -srcRect.x -CAST.vp.width/2)  * magnification),
+							     (int)((yMouse -srcRect.y -CAST.vp.height/2) * magnification),
+							     (int)(CAST.vp.width  * magnification),
+							     (int)(CAST.vp.height * magnification));
 						g2d.setComposite(co); // undo XOR mode
 						break;
 				}
@@ -1397,10 +1397,10 @@ public final class DisplayCanvas extends ImageCanvas implements KeyListener/*, F
 							   brushSize+1 );
 				} else if (ProjectToolbar.PENCIL == tool || ProjectToolbar.WAND == tool) {
 					// repaint area where the voodoo box is
-					r = new Rectangle( xMouse - AutomaticSegmentation.vp.width/2 - 2,
-							   yMouse - AutomaticSegmentation.vp.height/2 - 2,
-							   AutomaticSegmentation.vp.width + 4,
-							   AutomaticSegmentation.vp.height + 4 );
+					r = new Rectangle( xMouse - CAST.vp.width/2 - 2,
+							   yMouse - CAST.vp.height/2 - 2,
+							   CAST.vp.width + 4,
+							   CAST.vp.height + 4 );
 				}
 				if (null != r) {
 					Rectangle copy = (Rectangle)r.clone(); 
@@ -2325,11 +2325,11 @@ public final class DisplayCanvas extends ImageCanvas implements KeyListener/*, F
 				this.repaint(new Rectangle((int)(mwe.getX() / magnification) + srcRect.x - brushSize/2 - extra, (int)(mwe.getY() / magnification) + srcRect.y - brushSize/2 - extra, brushSize+extra, brushSize+extra), 0);
 			} else if (ProjectToolbar.PENCIL == tool || ProjectToolbar.WAND == tool) {
 				// resize area to consider for voodoo
-				int w = AutomaticSegmentation.vp.width;
-				int h = AutomaticSegmentation.vp.height;
-				AutomaticSegmentation.vp.resizeArea(sign, magnification);
-				w = Math.max(w, AutomaticSegmentation.vp.width);
-				h = Math.max(h, AutomaticSegmentation.vp.height);
+				int w = CAST.vp.width;
+				int h = CAST.vp.height;
+				CAST.vp.resizeArea(sign, magnification);
+				w = Math.max(w, CAST.vp.width);
+				h = Math.max(h, CAST.vp.height);
 				this.repaint(new Rectangle((int)(mwe.getX() / magnification) + srcRect.x - w/2 + 2,
 							   (int)(mwe.getY() / magnification) + srcRect.y - h/2 + 2,
 							   w + 4, h + 4), 0);

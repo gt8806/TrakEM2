@@ -6,7 +6,7 @@ import ij.gui.PolygonRoi;
 import ij.gui.Roi;
 import ij.gui.ShapeRoi;
 import ij.process.FloatPolygon;
-import ini.trakem2.imaging.AutomaticSegmentation;
+import ini.trakem2.imaging.CAST;
 import ini.trakem2.utils.IJError;
 import ini.trakem2.utils.M;
 import ini.trakem2.utils.OptionPanel;
@@ -713,13 +713,13 @@ public class AreaWrapper {
 				});
 				if (Utils.isControlDown(me)) {
 					// Grow with voodoo
-				    AutomaticSegmentation.Voodoo(this, la, Display.getFront().getCanvas().getSrcRect(), x_p_w, y_p_w, ptasks);
+				    CAST.Voodoo(this, la, Display.getFront().getCanvas().getSrcRect(), x_p_w, y_p_w, ptasks);
 				} else {
 					// Grow with voodoo
-					AutomaticSegmentation.Voodoo(this, la, Display.getFront().getCanvas().getSrcRect(), x_p_w, y_p_w, ptasks);
+					CAST.Voodoo(this, la, Display.getFront().getCanvas().getSrcRect(), x_p_w, y_p_w, ptasks);
 				}
 			} else if (ProjectToolbar.WAND == tool) {
-			    AutomaticSegmentation.Voodoo(this, la, Display.getFront().getCanvas().getSrcRect(), x_p_w, y_p_w, ptasks);
+			    CAST.Voodoo(this, la, Display.getFront().getCanvas().getSrcRect(), x_p_w, y_p_w, ptasks);
 			}
 		}
 	}

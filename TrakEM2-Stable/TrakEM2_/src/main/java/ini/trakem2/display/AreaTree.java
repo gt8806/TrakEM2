@@ -5,7 +5,7 @@ import fiji.geom.AreaCalculations;
 import ij.measure.Calibration;
 import ij.measure.ResultsTable;
 import ini.trakem2.Project;
-import ini.trakem2.imaging.AutomaticSegmentation;
+import ini.trakem2.imaging.CAST;
 import ini.trakem2.utils.AreaUtils;
 import ini.trakem2.utils.IJError;
 import ini.trakem2.utils.M;
@@ -407,7 +407,7 @@ public class AreaTree extends Tree<Area> implements AreaContainer {
 			// Semi automatic segmentation tools
 			final Area roi;
 			try {
-			    roi = new Area(this.at.createInverse().createTransformedShape(AutomaticSegmentation.vp.getBounds(x_p, y_p)));
+			    roi = new Area(this.at.createInverse().createTransformedShape(CAST.vp.getBounds(x_p, y_p)));
 			} catch (NoninvertibleTransformException nite) {
 				IJError.print(nite);
 				return;
